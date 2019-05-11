@@ -172,6 +172,10 @@ img {
   }
 }
 
+.navbar-custom .navbar-nav {
+  margin-right:1em !important;
+}
+
 .navbar-custom .avatar-container {
   position: absolute;
   left: 50%;

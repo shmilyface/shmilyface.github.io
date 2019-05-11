@@ -40,20 +40,20 @@ navbar-links:
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour
 
-navbar-col: "hsla(51,100%,50%,0.5)"
-navbar-text-col: "silver"
+navbar-col: "hsla(47,100%,50%,0.5)"
+navbar-text-col: "#777"
 navbar-children-col: "bronze"
 page-col: "white"
 link-col: "blue"
 hover-col: "red"
-footer-col: "gold"
+footer-col: "hsla(47,100%,50%,0.5)"
 footer-text-col: "silver"
 footer-link-col: "bronze"
 
 # Alternatively, the navbar, footer, and page background can be set to use background images
 # instead of colour
 
-navbar-img: "img/stephanie-5791.jpg"
+#navbar-img: "img/stephanie-5791.jpg"
 # footer-img: "/img/bgimage.png"
 # page-img: "/img/bgimage.png"
 

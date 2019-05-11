@@ -45,7 +45,7 @@ navbar-children-col: "white"
 page-col: "white"
 link-col: "blue"
 hover-col: "black"
-footer-col: "hsla(47,100%,50%,0.5)"
+footer-col: "white"
 footer-text-col: "#777"
 footer-link-col: "bronze"
 

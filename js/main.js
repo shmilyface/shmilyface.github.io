@@ -81,7 +81,7 @@ const fn = fisk(2, 2);
 const els = points.map(xy => fn(xy[0], xy[1], x2col(xy[0])));
 
 window.addEventListener('scroll', ev => {
-  const nowY = ev.scrollY;
+  const nowY = window.pageYOffset;
   const maxY = Math.max(
     document.body.scrollHeight, document.documentElement.scrollHeight,
     document.body.offsetHeight, document.documentElement.offsetHeight,
@@ -91,7 +91,6 @@ window.addEventListener('scroll', ev => {
   const i = Math.ceil(per * 100);
   const up = els.slice(0, i);
   const down = els.slice(i);
-  console.log(up, down);
   up.forEach((el, x) => anime(el, x, 1, 500));
   down.forEach((el, x) => anime(el, x + i, 0, 500));
 });

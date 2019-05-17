@@ -3,8 +3,8 @@
 (() => {
 const p = document.querySelector('#qapla');
 p.style.position = 'fixed';
-p.style.top = 0;
-p.style.left = 0;
+p.style.top = '100px';
+p.style.left = '50px';
 p.style.width = '100px';
 p.style.height = '100px';
 

@@ -10,9 +10,9 @@ random.size = () => random.int(10, 20);
 random.count = () => random.int(3, 6);
 const offset = x => (Math.floor(x / 2) + 25);
 random.ys = (off, size, count) => {
-	const bucket = [];
+  const bucket = [];
   for (let i = 0; i < count; i++)
-  	bucket.push(random.int(off, off + size));
+    bucket.push(random.int(off, off + size));
   return bucket;
 };
 random.pic = () => {
@@ -35,8 +35,8 @@ const fisk = (w, h) => (x, y, col) => {
   el.setAttribute('height', h);
   el.style.cssText = cssify({
     position: 'absolute',
-    top: `${x - width / 2}px`,
-    left: `${y - height / 2}px`,
+    top: `${x - w / 2}px`,
+    left: `${y - h / 2}px`,
     opacity: 0
   });
   p.appendChild(el);

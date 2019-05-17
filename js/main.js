@@ -3,7 +3,7 @@
 (() => {
 const p = document.querySelector('#qapla');
 const cols = ['ffab03', 'fc7f03', 'fc3903', 'd1024e', 'a6026c'];
-const x2cols = per => cols[Math.floor(per / 20)];
+const x2col = per => cols[Math.floor(per / 20)];
 const random = {};
 random.int = (min, max) => Math.floor(Math.random() * (max - min) + min + 1);
 random.size = () => random.int(10, 20);

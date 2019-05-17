@@ -1,5 +1,95 @@
 // Dean Attali / Beautiful Jekyll 2016
 
+(() => {
+const p = document.querySelector('#qapla');
+const cols = ['ffab03', 'fc7f03', 'fc3903', 'd1024e', 'a6026c'];
+const x2cols = per => cols[Math.floor(per / 20)];
+const random = {};
+random.int = (min, max) => Math.floor(Math.random() * (max - min) + min + 1);
+random.size = () => random.int(10, 20);
+random.count = () => random.int(3, 6);
+const offset = x => (Math.floor(x / 2) + 25);
+random.ys = (off, size, count) => {
+	const bucket = [];
+  for (let i = 0; i < count; i++)
+  	bucket.push(random.int(off, off + size));
+  return bucket;
+};
+random.pic = () => {
+  const points = [];
+  for (let i = 0, l = 33; i < l; i++) {
+    const x = i * 3 + 1.5;
+    const size = random.size();
+    const count = random.count();
+    const off = offset(x);
+    const color = x2col(x);
+    const ys = random.ys(off, size, count);
+    ys.forEach(y => points.push([x, y]));
+  }
+  return points;
+};
+const cssify = o => Object.entries(o).map(kv => `${kv[0]}:${kv[1]}`).join(';');
+const fisk = (w, h) => (x, y, col) => {
+  const el = document.createElement('canvas');
+  el.setAttribute('width', w);
+  el.setAttribute('height', h);
+  el.style.cssText = cssify({
+    position: 'absolute',
+    top: `${x - width / 2}px`,
+    left: `${y - height / 2}px`,
+    opacity: 0
+  });
+  p.appendChild(el);
+  const ctx = el.getContext('2d');
+  ctx.fillStyle = `#${col}`;
+  ctx.fillRect(0, 0, w, h);
+  return el;
+};
+
+const reqIds = [];
+const anime = (el, i, val, dur) => {
+  if (reqIds[i]) {
+    window.cancelAnimationFrame(reqIds[i]);
+    reqIds[i] = undefined;
+  }
+  const curVal = el.style.opacity;
+  const valDist = val - curVal;
+  window.requestAnimationFrame(start => {
+    const end = start + dur;
+    const fn = ts => {
+      if (ts > end) {
+        el.style.opacity = val;
+      } else {
+        const per = (ts - start) / dur;
+        const dist = valDist * per;
+        el.style.opacity = curVal + dist;
+        reqIds[i] = window.requestAnimationFrame(fn);
+      }
+    };
+    reqIds[i] = window.requestAnimationFrame(fn);
+  });
+};
+
+const points = random.pic();
+const fn = fisk(2, 2);
+const els = points.map(xy => fn(xy[0], xy[1], x2col(xy[0])));
+
+window.addEventListener('scroll', ev => {
+  const nowY = ev.scrollY;
+  const maxY = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
+  const per = nowY / maxY;
+  const i = Math.ceil(per * 100);
+  const up = els.slice(0, i);
+  const down = els.slice(i);
+  up.forEach((el, x) => anime(el, x, 1, 500));
+  down.forEach((el, x) => anime(el, x + i, 0, 500));
+});
+})();
+
 var main = {
 
   bigImgEl : null,

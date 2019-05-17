@@ -2,6 +2,12 @@
 
 (() => {
 const p = document.querySelector('#qapla');
+p.style.position = 'fixed';
+p.style.top = 0;
+p.style.left = 0;
+p.style.width = '100px';
+p.style.height = '100px';
+
 const cols = ['ffab03', 'fc7f03', 'fc3903', 'd1024e', 'a6026c'];
 const x2col = per => cols[Math.floor(per / 20)];
 const random = {};
@@ -85,6 +91,7 @@ window.addEventListener('scroll', ev => {
   const i = Math.ceil(per * 100);
   const up = els.slice(0, i);
   const down = els.slice(i);
+  console.log(up, down);
   up.forEach((el, x) => anime(el, x, 1, 500));
   down.forEach((el, x) => anime(el, x + i, 0, 500));
 });

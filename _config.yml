@@ -39,7 +39,7 @@ navbar-links:
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour
 
-navbar-col: "rgba(0,0,0,0)"
+navbar-col: "rgba(255,255,255,0.5)"
 navbar-text-col: "#777"
 navbar-children-col: "white"
 page-col: "white"

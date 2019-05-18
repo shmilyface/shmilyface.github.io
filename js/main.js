@@ -80,20 +80,21 @@ const points = random.pic();
 const fn = fisk(2, 2);
 const els = points.map(xy => fn(xy[0], xy[1], x2col(xy[0])));
 
-window.addEventListener('scroll', ev => {
+const every = now => {
   const nowY = window.pageYOffset;
   const maxY = Math.max(
     document.body.scrollHeight, document.documentElement.scrollHeight,
     document.body.offsetHeight, document.documentElement.offsetHeight,
-    document.body.clientHeight, document.documentElement.clientHeight
-  );
-  const per = nowY / maxY;
-  const i = Math.ceil(per * 100);
-  const up = els.slice(0, i);
-  const down = els.slice(i);
-  up.forEach((el, x) => anime(el, x, 1, 500));
-  down.forEach((el, x) => anime(el, x + i, 0, 500));
-});
+    document.body.clientHeight, document.documentElement.clientHeight);
+  const yPer = nowY / maxY;
+  const i = Math.floor(els.length * yPer);
+  const ups = els.slice(0, i);
+  const downs = els.slice(i);
+  ups.forEach((el, x) => anime(el, x, 1, 100));
+  downs.forEach((el, x) => anime(el, x + i, 0, 100));
+  window.requestAnimationFrame(every);
+};
+window.requestAnimationFrame(every);
 })();
 
 var main = {

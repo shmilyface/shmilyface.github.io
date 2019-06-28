@@ -4,7 +4,7 @@ title: Of Stephanie
 subtitle: Based on the True Story
 ---
 
-<img src="http://placekitten.com/100/100" width="100" height="100" alt="me!" style="float:left" />
+<img src="/img/stephanie-5791.jpg" width="300" height="200" alt="me!" style="float:left;margin-right:1em">
 
 Hi. I'm Stephanie. I'm a Data Scientist working to help make the world a more accessible place to live.
 
